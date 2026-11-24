@@ -18,7 +18,7 @@ ci.oninput=()=>{ck=0;cr()};ci.onkeydown=e=>{if(e.key==='ArrowDown'){ck=Math.min(
 function openCmd(){ci.value='';ck=0;cr();cmd.showModal();ci.focus()}
 addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();cmd.open?cmd.close():openCmd()}});
 $('#bCmd').onclick=openCmd;$('#bIns').onclick=()=>$('#R').classList.toggle('open');
-sel=P.layers[0]?.id||null;fit();refresh();tabTo(location.hash.length>1?(Object.keys(HS).find(k=>HS[k]===location.hash.slice(1))||'nf'):'hm');
+sel=P.layers[0]?.id||null;fit();refresh();tabTo(location.hash.length>1?(Object.keys(HS).find(k=>HS[k]===location.hash.slice(1))||'nf'):'ed');
 
 
 document.addEventListener('click',e=>document.querySelectorAll('details.menu[open]').forEach(d=>{if(!d.contains(e.target)||e.target.closest('.pop button'))d.open=false}));

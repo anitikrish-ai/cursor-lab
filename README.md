@@ -10,7 +10,7 @@ Run: open `index.html`, or serve the folder with any static host. Test: `npm tes
 - Have the privacy policy and terms reviewed for your jurisdiction. They are plain templates.
 
 ## Layout
-css/app.css, js/ (core, engine, formats, state, ui, canvas, timeline, preview, packs, shell, app), tests/formats.test.js, favicon.svg.
+css/app.css, js/ (core, engine, formats, state, ui, canvas, timeline, preview, packs, shell, app, extras), tests/formats.test.js, favicon.svg.
 Scripts are classic files that share one global scope and must load in the order listed in index.html.
 
 ## Known limits
