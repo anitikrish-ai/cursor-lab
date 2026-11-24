@@ -24,3 +24,12 @@ sel=P.layers[0]?.id||null;fit();refresh();tabTo(location.hash.length>1?(Object.k
 document.addEventListener('click',e=>document.querySelectorAll('details.menu[open]').forEach(d=>{if(!d.contains(e.target)||e.target.closest('.pop button'))d.open=false}));
 
 addEventListener('error',e=>msg('Something went wrong: '+e.message+'. Your project is autosaved. Reload the page to continue.'));
+
+// ---- drag and drop import
+(()=>{const z=$('#C');let n=0;const has=e=>[...(e.dataTransfer?.types||[])].includes('Files'),on=e=>tab==='ed'&&has(e);
+addEventListener('dragover',e=>{if(has(e))e.preventDefault()});
+addEventListener('dragenter',e=>{if(on(e)){n++;z.classList.add('drop')}});
+addEventListener('dragleave',e=>{if(on(e)&&--n<=0){n=0;z.classList.remove('drop')}});
+addEventListener('drop',e=>{if(!has(e))return;e.preventDefault();n=0;z.classList.remove('drop');if(tab!=='ed')return msg('Open the Studio, then drop the file.');
+for(const f of e.dataTransfer.files){const nm=f.name.toLowerCase(),id=f.type.startsWith('image/')?'#fImg':/\.(json|cur|ani)$/.test(nm)?'#fOpen':null;if(!id){msg('Cannot import "'+f.name+'". Drop an image (PNG, JPG, WebP, SVG, GIF) or a project (.json, .cur, .ani).');continue}
+const dt=new DataTransfer();dt.items.add(f);const el=$(id);el.files=dt.files;el.dispatchEvent(new Event('change'))}});})();
